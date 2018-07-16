@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\tutorial_physics_effects_high_level\high_level\pfx_rigidbody_world.cpp">
+      <Filter>high_level</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="physics_func.cpp" />
+    <ClCompile Include="..\ragdoll_common\pfx_ragdoll.cpp">
+      <Filter>ragdoll_common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ragdoll_common\ragdoll_control.cpp">
+      <Filter>ragdoll_common</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\tutorial_physics_effects_high_level\high_level\pfx_high_level_include.h">
+      <Filter>high_level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tutorial_physics_effects_high_level\high_level\pfx_rigidbody_world.h">
+      <Filter>high_level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tutorial_physics_effects_high_level\high_level\pfx_rigidbody_world_implementation.h">
+      <Filter>high_level</Filter>
+    </ClInclude>
+    <ClInclude Include="physics_func.h" />
+    <ClInclude Include="..\ragdoll_common\pfx_ragdoll.h">
+      <Filter>ragdoll_common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ragdoll_common\ragdoll_control.h">
+      <Filter>ragdoll_common</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="high_level">
+      <UniqueIdentifier>{698d9e3a-5d3a-45e7-82b7-b7a04d790a4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ragdoll_common">
+      <UniqueIdentifier>{b4628c2a-d46d-4cbd-aa76-6b0d5f2c1910}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

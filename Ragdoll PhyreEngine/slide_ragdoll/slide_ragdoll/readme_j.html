@@ -1,0 +1,188 @@
+﻿
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<xml>
+  <MSHelp:Attr Name="Locale" Value="kbJapanese"/>
+  <MSHelp:Attr Name="DocSet" Value="Sony Interactive Entertainment"/>
+</xml>
+
+<title>ラグドール チュートリアル : スライド</title>
+
+<style type="text/css"> 
+ <!-- 
+			body { font-family: Arial, Verdana, Helvetica; font-size: 100% }
+			h1, h2, h3, h4, h5, h6 { color: #000000 }
+			h1 {margin: 8px 0;}
+			h2 {border-bottom:1px solid #999999; padding-bottom: 3px; }
+			a { color: DarkBlue; }
+			a:hover, a:active { color: #FF4500; }
+			a:visited { color: DarkRed; }
+			p {margin:0.8em 0;}
+                        ul { margin: 1px 0 1px 2em; padding: 0; }
+			li { font-size: 100% }
+			pre.source { font-size: 100%; font-family: monospace; background-color: #eee; 
+						   background-repeat: repeat; background-attachment: scroll; 
+						   overflow: auto; display: block; border: 1px dashed #aaa; 
+						   margin: 10px 0; padding: 5px; background-position: 0% }
+			div.title1 { color: #000000; font-size: 180%; padding-left: 5px }
+			div.title2 { color: #000000; font-size: 160%; padding-left: 5px }
+			div.title3 { color: #000000; font-size: 140%; padding-left: 5px }
+			div.note { background-color: MistyRose; border: 1px solid Gray; margin: 10px 0; padding: 3px }
+			div.index {  background-color: #eee; border: 1px solid Gray; margin: 10px 0; padding: 3px }
+			span.back-to-top { font-size: 70% }
+			div.indent { font-size: 100%; margin-left: 2em }
+			div.header { font-size: 70%; color:#666666; }
+			table { font-size: 100%; border-collapse: collapse; margin: 5px }
+			td { vertical-align: top; border: 1px solid #ccc; padding-left: 4px; padding-right: 4px; padding-top: 3px; padding-bottom: 3px }
+			th { background-color: #f0f0f0; text-align: center; vertical-align: top; 
+						   border: 1px solid #ccc; padding-left: 4px; padding-right: 4px; 
+		-->
+</style>
+
+</head> 
+<body>
+<div class="header">
+<p>SIE CONFIDENTIAL</p>
+<p>Copyright (C) 2017 Sony Interactive Entertainment Inc. All Rights Reserved.</p>
+</div>
+
+<div class="introduction">
+<h1>ラグドール チュートリアル : スライド</h1>
+<h2>概要</h2>
+<div class="indent">
+
+	<p>本チュートリアルは、ラグドールを坂に沿って転がすための動作を制御するための手法を紹介します。</p>
+
+</div>
+</div>
+
+<h2>スクリーンショット</h2>
+
+<div align=center><img src="slide_ragdoll.png"><br><p>描画結果</p></div>
+
+<h2>詳細</h2>
+<div class="indent">
+
+<p>ラグドールと地形との干渉をトリガ剛体によってチェックし、衝突した面（壁）にSlide属性が指定されていた場合に発動します。
+ラグドールを坂に沿って転がすような動作を表現します。ラグドールをそのまま坂の上に置くと、たいていのケースではそのまま滑り落ちます。実際にはコリジョン用の地形は平らになっていたとしても、レンダリング用の地形には高精細な凹凸が表現されているケースが多く、単に滑り落ちてくるだけでは視覚的に不自然に感じられます。
+そこで、指定した角速度で転がりながら、ラグドールが坂を落ちてくるような動作を与えます。スムーズに転がすため、ラグドールの体幹軸が坂に対して水平になるように同時に姿勢を回転させ、坂の傾斜に応じた、滑り落ちるための並進速度を与えています。
+複雑な地形の上にラグドールが乗り上げ、スタックした場合に、Slideによってラグドールを安全なエリアへ転がし、状況を回避する目的に使用することもできます。
+</p>
+
+</div>
+
+<h2>操作説明</h2>
+<div class="indent">
+<p></p>
+
+
+<table border=1 width=500>
+<tr>
+<th>アクション</th>
+<th>挙動</th>
+</tr>
+
+<tr>
+<td>○ button</td>
+<td>シミュレーションをステップ実行</td>
+</tr>
+
+<tr>
+<td>△ button</td>
+<td>ラグドールをランダムな方向に投げる</td>
+</tr>
+
+<tr>
+<td>× button</td>
+<td>シミュレーションを開始/停止</td>
+</tr>
+
+<tr>
+<td>up button</td>
+<td>カメラを上方に回転</td>
+</tr>
+
+<tr>
+<td>right button</td>
+<td>カメラを右に回転</td>
+</tr>
+
+<tr>
+<td>left button</td>
+<td>カメラを左に回転</td>
+</tr>
+
+<tr>
+<td>down button</td>
+<td>カメラを下方に回転</td>
+</tr>
+
+<tr>
+<td>R2 button</td>
+<td>シーンのリセット</td>
+</tr>
+
+<tr>
+<td>R1 button</td>
+<td>カメラを前方に移動</td>
+</tr>
+
+<tr>
+<td>L2 button</td>
+<td>剛体をつかむ・はなす</td>
+</tr>
+
+<tr>
+<td>L1 button</td>
+<td>カメラを後方に移動</td>
+</tr>
+
+</table>
+<br>
+
+<p>タッチパッドを使って、つかんだ剛体を動かすことができます。</p>
+</div>
+
+<h2>変更点</h2>
+<ul>
+
+<li>5.000</li>
+
+初期バージョン<br>
+
+</ul>
+
+<h2>キーワード</h2>
+<ul>
+
+<li>物理</li>
+
+<li>剛体</li>
+
+<li>衝突</li>
+
+<li>アニメーション</li>
+
+<li>ラグドール</li>
+
+<li>ビヘイビア</li>
+
+<li>rigid body</li>
+
+<li>physics</li>
+
+<li>collision</li>
+
+<li>animation</li>
+
+<li>ragdoll</li>
+
+<li>behavior</li>
+
+</ul>
+
+</body>
+</html>

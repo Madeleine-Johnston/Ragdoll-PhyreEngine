@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|ORBIS">
+      <Configuration>Debug</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ORBIS">
+      <Configuration>Release</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A7455393-3685-416C-900B-7CB64808576D}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ORBIS'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ORBIS'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|ORBIS'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|ORBIS'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ORBIS'">
+    <OutDir>$(ProjectDir)$(Platform)_$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ORBIS'">
+    <OutDir>$(ProjectDir)$(Platform)_$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ORBIS'">
+    <ClCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions);</PreprocessorDefinitions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories>../../include;$(SCE_ORBIS_SDK_DIR)/target/include_common;$(SCE_ORBIS_SDK_DIR)/target/samples;$(SCE_ORBIS_SAMPLE_DIR)\sample_code\common\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>-lSceRazorCpu_stub_weak;-lSceSysmodule_stub_weak;-lEdgeAnim;-lScePhysicsEffects;-lSceJobManager_stub_weak;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Link>
+      <AdditionalLibraryDirectories>../../lib/$(Platform)_$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist "$(ProjectDir)data" mkdir "$(ProjectDir)data"
+xcopy /I /Y "$(SCE_ORBIS_SDK_DIR)\target\sce_module\*" "$(ProjectDir)\sce_module\"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ORBIS'">
+    <ClCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions);</PreprocessorDefinitions>
+      <OptimizationLevel>Level2</OptimizationLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories>../../include;$(SCE_ORBIS_SDK_DIR)/target/include_common;$(SCE_ORBIS_SDK_DIR)/target/samples;$(SCE_ORBIS_SAMPLE_DIR)\sample_code\common\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>-lSceRazorCpu_stub_weak;-lSceSysmodule_stub_weak;-lEdgeAnim;-lScePhysicsEffects;-lSceJobManager_stub_weak;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Link>
+      <AdditionalLibraryDirectories>../../lib/$(Platform)_$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist "$(ProjectDir)data" mkdir "$(ProjectDir)data"
+xcopy /I /Y "$(SCE_ORBIS_SDK_DIR)\target\sce_module\*" "$(ProjectDir)\sce_module\"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(SCE_ORBIS_SAMPLE_DIR)\sample_code\common\source\sampleutil\libSceSampleUtil.vcxproj">
+      <Project>{30a1b994-c2c6-485f-911b-fb4674366da8}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\source\sampleutil\libSceSampleUtil.vcxproj">
+      <Project>{30a1b994-c2c6-485f-911b-fb4674366da8}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\api_physics_effects\common\pfx_sample_common.orbis.vcxproj">
+      <Project>{7d4d04b0-f321-422d-bb47-4dd38b726ba2}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\tutorial_physics_effects_high_level\high_level\pfx_rigidbody_world.cpp" />
+    <ClCompile Include="..\ragdoll_common\pfx_ragdoll.cpp" />
+    <ClCompile Include="..\ragdoll_common\ragdoll_control.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="physics_func.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\tutorial_physics_effects_high_level\high_level\pfx_high_level_include.h" />
+    <ClInclude Include="..\..\tutorial_physics_effects_high_level\high_level\pfx_rigidbody_world.h" />
+    <ClInclude Include="..\..\tutorial_physics_effects_high_level\high_level\pfx_rigidbody_world_implementation.h" />
+    <ClInclude Include="..\ragdoll_common\pfx_ragdoll.h" />
+    <ClInclude Include="..\ragdoll_common\ragdoll_control.h" />
+    <ClInclude Include="physics_func.h" />
+  </ItemGroup>
+  <Import Condition="'$(ConfigurationType)' == 'Makefile' and Exists('$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets')" Project="$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

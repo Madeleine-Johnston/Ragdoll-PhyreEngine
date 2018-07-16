@@ -1,0 +1,180 @@
+﻿
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<xml>
+  <MSHelp:Attr Name="Locale" Value="kbEnglish"/>
+  <MSHelp:Attr Name="DocSet" Value="Sony Interactive Entertainment"/>
+</xml>
+<title>Ragdoll Tutorial : Slide Behavior</title>
+
+<style type="text/css"> 
+ <!-- 
+			body { font-family: Arial, Verdana, Helvetica; font-size: 100% }
+			h1, h2, h3, h4, h5, h6 { color: #000000 }
+			h1 {margin: 8px 0;}
+			h2 {border-bottom:1px solid #999999; padding-bottom: 3px; }
+			a { color: DarkBlue; }
+			a:hover, a:active { color: #FF4500; }
+			a:visited { color: DarkRed; }
+			p {margin:0.8em 0;}
+                        ul { margin: 1px 0 1px 2em; padding: 0; }
+			li { font-size: 100% }
+			pre.source { font-size: 100%; font-family: monospace; background-color: #eee; 
+						   background-repeat: repeat; background-attachment: scroll; 
+						   overflow: auto; display: block; border: 1px dashed #aaa; 
+						   margin: 10px 0; padding: 5px; background-position: 0% }
+			div.title1 { color: #000000; font-size: 180%; padding-left: 5px }
+			div.title2 { color: #000000; font-size: 160%; padding-left: 5px }
+			div.title3 { color: #000000; font-size: 140%; padding-left: 5px }
+			div.note { background-color: MistyRose; border: 1px solid Gray; margin: 10px 0; padding: 3px }
+			div.index {  background-color: #eee; border: 1px solid Gray; margin: 10px 0; padding: 3px }
+			span.back-to-top { font-size: 70% }
+			div.indent { font-size: 100%; margin-left: 2em }
+			div.header { font-size: 70%; color:#666666; }
+			table { font-size: 100%; border-collapse: collapse; margin: 5px }
+			td { vertical-align: top; border: 1px solid #ccc; padding-left: 4px; padding-right: 4px; padding-top: 3px; padding-bottom: 3px }
+			th { background-color: #f0f0f0; text-align: center; vertical-align: top; 
+						   border: 1px solid #ccc; padding-left: 4px; padding-right: 4px; 
+		-->
+</style>
+
+</head> 
+<body>
+<div class="header">
+<p>SIE CONFIDENTIAL</p>
+<p>Copyright (C) 2017 Sony Interactive Entertainment Inc. All Rights Reserved.</p>
+</div>
+
+<div class="introduction">
+<h1>Ragdoll Tutorial : Slide Behavior</h1>
+<h2>Overview</h2>
+<div class="indent">
+
+	<p>This tutorial shows how to control rolling behavior when a ragdoll is on a slope.</p>
+
+</div>
+</div>
+
+<h2>Screenshot</h2>
+
+<div align=center><img src="slide_ragdoll.png"><br><p>Result</p></div>
+
+<h2>Explanation</h2>
+<div class="indent">
+
+<p>A trigger rigid body is used to check interactions between the ragdoll and the terrain, and it will be triggered when the Slide attribute has been specified for a surface (wall) where a collision occurred.
+An operation where a ragdoll rolls along a hill is represented. When the ragdoll is placed as-is at the top of the hill, in almost all cases it will slide down. Even if the collision terrain is actually flat, there are many cases where the rendering terrain represents fine bumps, and simply sliding down will seem visually unnatural.
+Therefore, an operation is applied where the ragdoll falls down the hill while rolling at the specified angular velocity. In order for smooth rolling, the orientation is rolled while the torso axis of the ragdoll is kept parallel to the hill, and translational velocity that corresponds with the inclination of the hill is applied for a smooth fall.
+When a ragdoll is stuck on complex terrain, it is also possible to use Slide to roll the ragdoll to a safe area for the purpose of avoiding this situation.
+</p>
+
+</div>
+
+<h2>Operation Manual</h2>
+<div class="indent">
+<p></p>
+
+
+<table border=1 width=500>
+<tr>
+<th>Action</th>
+<th>Behavior</th>
+</tr>
+
+<tr>
+<td>○ button</td>
+<td>Step simulation</td>
+</tr>
+
+<tr>
+<td>△ button</td>
+<td>Throw a ragdoll to random direction</td>
+</tr>
+
+<tr>
+<td>× button</td>
+<td>Start/Stop simulation</td>
+</tr>
+
+<tr>
+<td>up button</td>
+<td>Rotate the camera up</td>
+</tr>
+
+<tr>
+<td>right button</td>
+<td>Rotate the camera right</td>
+</tr>
+
+<tr>
+<td>left button</td>
+<td>Rotate the camera left</td>
+</tr>
+
+<tr>
+<td>down button</td>
+<td>Rotate the camera down</td>
+</tr>
+
+<tr>
+<td>R2 button</td>
+<td>Reset the scene</td>
+</tr>
+
+<tr>
+<td>R1 button</td>
+<td>Move the camera forward</td>
+</tr>
+
+<tr>
+<td>OPTIONS button</td>
+<td>Reset the scene</td>
+</tr>
+
+<tr>
+<td>L2 button</td>
+<td>Grab / Release a rigid body</td>
+</tr>
+
+<tr>
+<td>L1 button</td>
+<td>Move the camera backward</td>
+</tr>
+
+</table>
+<br>
+
+<p>Move a grabbed rigid body using a touch pad.</p>
+</div>
+
+<h2>Changes</h2>
+<ul>
+
+<li>5.000</li>
+
+First release<br>
+
+</ul>
+
+<h2>Keywords</h2>
+<ul>
+
+<li>rigid body</li>
+
+<li>physics</li>
+
+<li>collision</li>
+
+<li>animation</li>
+
+<li>ragdoll</li>
+
+<li>behavior</li>
+
+</ul>
+
+</body>
+</html>
